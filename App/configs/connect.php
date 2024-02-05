@@ -3,7 +3,7 @@
 const DBHOST = 'db';
 const DBUSER = 'antoine';
 const DBPASS = 'password';
-const DBNAME = 'dbapp';
+const DBNAME = 'Bookeo';
 
 $dsn = 'mysql:host=' . DBHOST . ';dbname=' . DBNAME;
 
