@@ -7,6 +7,9 @@ class Book
     protected ?int $id = null;
     protected string $title;
     protected string $description;
+    protected string $image;
+    protected int $type_id;
+    protected int $author_id;
 
     /**
      * Get the value of id
@@ -64,6 +67,66 @@ class Book
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of image
+     */ 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set the value of image
+     *
+     * @return  self
+     */ 
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of type_id
+     */ 
+    public function getTypeId()
+    {
+        return $this->type_id;
+    }
+
+    /**
+     * Set the value of type_id
+     *
+     * @return  self
+     */ 
+    public function setTypeId($type_id)
+    {
+        $this->type_id = $type_id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of author_id
+     */ 
+    public function getAuthorId()
+    {
+        return $this->author_id;
+    }
+
+    /**
+     * Set the value of author_id
+     *
+     * @return  self
+     */ 
+    public function setAuthorId($author_id)
+    {
+        $this->author_id = $author_id;
 
         return $this;
     }
