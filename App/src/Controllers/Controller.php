@@ -15,7 +15,8 @@ Class Controller
                         $pageController->route();
                         break;
                     case 'book':
-                        // charge controleur book
+                        $bookController = new BookController();
+                        $bookController->route();
                         break;
                     default:
                         throw new \Exception("Ce controller n'existe pas : ".$_GET['controller']);
