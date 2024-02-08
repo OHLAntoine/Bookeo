@@ -6,23 +6,32 @@ Class Controller
 {
     public function route() : void 
     {
-        if (isset($_GET['controller'])) {
-            switch ($_GET['controller']) {
-                case 'page':
-                    // charge controlleur page
-                    $pageController = new PageController();
-                    $pageController->route();
-                    break;
-                case 'book':
-                    // charge controleur book
-                    break;
-                default:
-                    // Erreur
-                    break;
+        try {
+            if (isset($_GET['controller'])) {
+                switch ($_GET['controller']) {
+                    case 'page':
+                        // charge controlleur page
+                        $pageController = new PageController();
+                        $pageController->route();
+                        break;
+                    case 'book':
+                        // charge controleur book
+                        break;
+                    default:
+                        throw new \Exception("Ce controller n'existe pas : ".$_GET['controller']);
+                        break;
+                }
+            } else {
+                // si pas de controller dans l'url -> home
+                $pageController = new PageController();
+                $pageController->home();
             }
-        } else {
-            //charger home
+        } catch (\Exception $e) {
+            $this->render('errors/default', [
+                'error' => $e->getMessage()
+            ]);
         }
+        
     }
 
     protected function render(string $path, array $params = []) :void
@@ -37,7 +46,9 @@ Class Controller
                 require_once $filePath;
             }
         } catch (\Exception $e) {
-            echo $e->getMessage();
+            $this->render('errors/default', [
+                'error' => $e->getMessage()
+            ]);
         }
 
     }
